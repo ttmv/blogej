@@ -6,5 +6,19 @@
   <%= @blog.description %>
 </p>
 
+<p>
+  <ul>
+    <% @blog.entries.each do |entry| %>
+      <li>
+        <h2><%= link_to entry.subject, entry %></h2>
+        <p><%= entry.date %></p>
+        <p><%= simple_format(entry.content) %></p>
+      </li>
+    <% end %>
+  </ul>
+</p>
+
+<p><%= link_to 'New entry', new_entry_path %></p>
 <%= link_to 'Edit Blog', edit_blog_path(@blog) %> |
 <%= link_to 'Blog list', blogs_path %>
+<%= link_to 'Destroy', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -7,6 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div>
+  <%= link_to 'All Blogs', blogs_path %> <%= link_to 'Latest posts', entries_path %> <%= link_to 'Create blog', new_blog_path %> <%= link_to 'Add new entry', new_entry_path %>
+</div>
 
 <%= yield %>
 

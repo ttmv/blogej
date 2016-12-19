@@ -1,24 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+
+<h1><%= @entry.subject %></h1>
+
 <p>
-  <strong>Subject:</strong>
-  <%= @entry.subject %>
+  <%= simple_format(@entry.content) %>
 </p>
 
 <p>
-  <strong>Content:</strong>
-  <%= @entry.content %>
-</p>
-
-<p>
-  <strong>Date:</strong>
   <%= @entry.date %>
 </p>
 
-<p>
-  <strong>Blog:</strong>
-  <%= @entry.blog_id %>
-</p>
+<%= link_to 'Edit post', edit_entry_path(@entry) %> |
+<%= link_to "to #{@entry.blog.name}", @entry.blog %> | 
+<%= link_to 'Destroy', @entry, method: :delete, data: { confirm: 'Are you sure?' } %>
 
-<%= link_to 'Edit', edit_entry_path(@entry) %> |
-<%= link_to 'Back', entries_path %>

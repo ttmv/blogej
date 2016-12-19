@@ -15,10 +15,12 @@ class EntriesController < ApplicationController
   # GET /entries/new
   def new
     @entry = Entry.new
+    @blogs = Blog.all
   end
 
   # GET /entries/1/edit
   def edit
+    @blogs = Blog.all
   end
 
   # POST /entries
@@ -54,9 +56,10 @@ class EntriesController < ApplicationController
   # DELETE /entries/1
   # DELETE /entries/1.json
   def destroy
+    @blog = @entry.blog
     @entry.destroy
     respond_to do |format|
-      format.html { redirect_to entries_url, notice: 'Entry was successfully destroyed.' }
+      format.html { redirect_to @blog, notice: 'Entry was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
